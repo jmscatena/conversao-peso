@@ -6,7 +6,7 @@ name: CI-CD # Nome do workflow
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ meubranch ]
+    branches: [ mbranch ]
 #  pull_request:
 #    branches: [ main ]
 
@@ -33,8 +33,8 @@ jobs:
       - name: Docker Build and Push
         uses: docker/build-push-action@v2
         with:
-          context: ./src
-          file: ./src/Dockerfile
+          context: ./
+          file: ./Dockerfile
           push: true
           tags: |
             jmscatena/conversao_peso:latest
@@ -56,5 +56,3 @@ jobs:
           images: jmscatena/conversao_peso:v${{ github.run_number }}
           manifests: |
             deployment_peso.yaml
-            
-      
